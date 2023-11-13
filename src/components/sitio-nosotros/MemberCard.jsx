@@ -4,7 +4,7 @@ const MemberCard = () => {
     return (
         <div className='p-12 m-14 w-80 border'>
             <div className="w-full">
-                <img src="./default-profile.png" alt="Foto de perfil" />
+                <img className='mx-auto mb-8' src="./img/default-profile.png" alt="Foto de perfil" />
             </div>
             <div className="mb-6">
                 <h2 className='font-bold text-2xl'>Apellido</h2>
