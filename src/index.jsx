@@ -4,10 +4,13 @@ import ReactDOM from "react-dom/client";
 
 // Importando otros componentes
 import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 
 // Inicio del código del componente
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-    <App></App>
+<BrowserRouter>
+<App></App>
+</BrowserRouter>
 );
