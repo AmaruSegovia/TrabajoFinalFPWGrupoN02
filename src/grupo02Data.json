@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "imagen": "ro.jpg",
+        "apellido": "Albornoz",
+        "nombre": "María Del Rosario",
+        "dni": "45468682",
+        "lu": "0412",
+        "github": "MushRoss022"
+    },
+    {
+        "id": 2,
+        "imagen": "maru.jpg",
+        "apellido": "Segovia",
+        "nombre": "Joaquín Amaru",
+        "dni": "44645340",
+        "lu": "0095",
+        "github": "AmaruSegovia"
+    },
+    {
+        "id": 3,
+        "imagen": "neru.jpg",
+        "apellido": "Sosa",
+        "nombre": "Milagros Nahir",
+        "dni": "44645934",
+        "lu": "0500",
+        "github": "nt-neru"
+    },
+    {
+        "id": 4,
+        "imagen": "nacho.jpg",
+        "apellido": "Torres",
+        "nombre": "Ismael Ignacio Miguel",
+        "dni": "44125517",
+        "lu": "0095",
+        "github": "NT125"
+    },
+    {
+        "id": 5,
+        "imagen": "fer.png",
+        "apellido": "Zerda",
+        "nombre": "Fernando Waldo",
+        "dni": "42582115",
+        "lu": "0685",
+        "github": "Zendo27"
+    }
+]
