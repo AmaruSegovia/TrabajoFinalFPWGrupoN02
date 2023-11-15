@@ -2,7 +2,7 @@ import React from 'react'
 
 const MemberCard = (props) => {
     return (
-        <div className='p-12 m-14 w-80 border hover:border-slate-300 transition-all ease-in-out'>
+        <div className='p-12 m-14 w-80 border-2 rounded-md hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200 transition-all ease-out'>
             <div className="w-full">
                 <img className='mx-auto mb-8 rounded-lg shadow-xl' src={"./img/" + props.imagen} alt="Foto de perfil" />
             </div>

@@ -1,9 +1,9 @@
 import React from 'react'
-import ItemButton from "./components/ItemButton.jsx";
 import {Routes, Route} from 'react-router-dom';
-import Navbar from "./components/Navbar.jsx";
-import Proyectos from "./components/Proyectos.jsx"
-import Home from "./components/Home.jsx"
+import Navbar from "./components/navbar/Navbar.jsx";
+import Home from "./components/sitio-home/Home.jsx"
+import ProyectosReact from './components/ProyectosReact.jsx';
+import ProyectosPhaser from './components/ProyectosPhaser.jsx';
 import Nosotros from './components/sitio-nosotros/Nosotros.jsx';
 
 function App() {
@@ -12,8 +12,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<Navbar/> }>
                     <Route path="/" element={<Home/>} />
-                    <Route path="Proyectos" element={<Proyectos/>} />
-                    <Route path="Nosotros" element={<Nosotros/>} />
+                    <Route path="/react" element={<ProyectosReact/>} />
+                    <Route path="/phaser-js" element={<ProyectosPhaser/>} />
+                    <Route path="/nosotros" element={<Nosotros/>} />
                 </Route>
             </Routes>
         </div>

@@ -11,8 +11,11 @@ const Navbar = () => {
         <Link to="/">
           <NavButton label="Home"></NavButton>
         </Link>
-        <Link to="/proyectos">
-          <NavButton label="Proyectos"></NavButton>
+        <Link to="/react">
+          <NavButton label="Proyectos en React"></NavButton>
+        </Link>
+        <Link to="/phaser-js">
+          <NavButton label="Proyectos en PhaserJS"></NavButton>
         </Link>
         <Link to="/nosotros">
           <NavButton label="Nosotros"></NavButton>
