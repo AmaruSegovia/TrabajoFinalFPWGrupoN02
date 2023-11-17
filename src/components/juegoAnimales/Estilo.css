@@ -33,6 +33,7 @@ body {
   }
   
   .animal-image {
+    margin: auto;
     max-width: 100%;
     border: 2px solid #333;
     border-radius: 8px;
