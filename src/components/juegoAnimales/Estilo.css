@@ -1,4 +1,4 @@
-body {
+.juego-animales {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,10 +9,6 @@ body {
     background-repeat: no-repeat; 
     background-attachment: fixed; 
     font-family: 'Montserrat', sans-serif;
-  }
-  
-  h1 {
-    font-family: cursive;
   }
   
   
@@ -64,7 +60,14 @@ body {
   .incorrect-message {
     font-size: 18px;
     font-weight: bold;
-    color: #007BFF;
+  }
+
+  .correct-message{
+    color:#28a745;
+  }
+
+  .incorrect-message{
+    color:#ff4f69
   }
   
   .next-button {

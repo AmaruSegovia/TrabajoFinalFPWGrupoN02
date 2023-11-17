@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import animales1 from '../../animales.json'
+import animales1 from './animales.json'
 import './Estilo.css';
 
 function Juego({ nombreJugador, puntaje, setPuntaje, alTerminar, rondaActual, setRondaActual, rondasTotales, setRondasTotales, jugadorActual, setJugadorActual }) {
@@ -14,16 +14,16 @@ function Juego({ nombreJugador, puntaje, setPuntaje, alTerminar, rondaActual, se
 
     // Función para obtener un animal aleatorio de la lista
     const obtenerAnimalAleatorio = () => {
-        const animales = animales1.animales; 
+        const animales = animales1.animales;
         const indiceAleatorio = Math.floor(Math.random() * animales.length);
         return animales[indiceAleatorio];
     };
-    
+
     // Función para obtener opciones aleatorias (incluyendo el animal correcto)
     const obtenerOpcionesAleatorias = () => {
         const animalCorrecto = obtenerAnimalAleatorio();
         let opcionesAleatorias = [animalCorrecto];
-        
+
         // Agrega opciones aleatorias hasta alcanzar un total de 3
         while (opcionesAleatorias.length < 3) {
             const opcion = obtenerAnimalAleatorio();
@@ -31,15 +31,15 @@ function Juego({ nombreJugador, puntaje, setPuntaje, alTerminar, rondaActual, se
                 opcionesAleatorias.push(opcion);
             }
         }
-        
+
         // Ordena las opciones de forma aleatoria
         opcionesAleatorias = opcionesAleatorias.sort(() => Math.random() - 0.5);
-        
+
         // Actualiza el estado con las nuevas opciones y el animal objetivo
         setOpciones(opcionesAleatorias);
         setAnimalObjetivo(animalCorrecto);
     };
-    
+
     // Función para usar el comodín
     const usarComodin = () => {
         if (jugadorActual === 1 && usoComodinJugador1) {
@@ -49,14 +49,14 @@ function Juego({ nombreJugador, puntaje, setPuntaje, alTerminar, rondaActual, se
         }
         // Encuentra el índice del botón incorrecto
         const indiceBotonIncorrecto = opciones.findIndex(animal => animal !== animalObjetivo);
-        
+
         // Copia el array de opciones y elimina el botón incorrecto
         const nuevasOpciones = [...opciones];
         nuevasOpciones.splice(indiceBotonIncorrecto, 1);
-        
+
         // Actualiza el estado con las nuevas opciones y desactiva el uso del comodín
         setOpciones(nuevasOpciones);
-        
+
     }
 
     // Función para verificar la respuesta del jugador
@@ -103,28 +103,30 @@ function Juego({ nombreJugador, puntaje, setPuntaje, alTerminar, rondaActual, se
     }, []);
 
     return (
-        <div className="juego-container">
-            <h1 className="juego-title">{nombreJugador}, Can you guess this animal?</h1>
-            <p className="round-number">Round Number: {rondaAreglo}</p>
-            <img src={`/img/JuegoAnimales/${animalObjetivo}.png`} alt={animalObjetivo} className="animal-image" />
-            <div className="opciones-container">
-                {opciones.map((animal) => (
-                    <button
-                        key={animal}
-                        onClick={() => verificarRespuesta(animal)}
-                        disabled={!puedeHacerClic || opcionesDeshabilitadas}
-                        className="opcion-button"
-                    >
-                        {animal}
-                    </button>
-                ))}
+        <div className="juego-animales">
+            <div className="juego-container">
+                <h1 className="juego-title">{nombreJugador}, Can you guess this animal?</h1>
+                <p className="round-number">Round Number: {rondaAreglo}</p>
+                <img src={`/img/JuegoAnimales/${animalObjetivo}.png`} alt={animalObjetivo} className="animal-image" />
+                <div className="opciones-container">
+                    {opciones.map((animal) => (
+                        <button
+                            key={animal}
+                            onClick={() => verificarRespuesta(animal)}
+                            disabled={!puedeHacerClic || opcionesDeshabilitadas}
+                            className="opcion-button"
+                        >
+                            {animal}
+                        </button>
+                    ))}
+                </div>
+                {esCorrecto === true && <p className="correct-message">Correct!</p>}
+                {esCorrecto === false && <p className="incorrect-message">Incorrect!</p>}
+                <button onClick={siguienteRonda} disabled={puedeHacerClic || !opcionesDeshabilitadas} className="next-button">Next question {"->"}</button>
+                <br></br>
+                {jugadorActual === 1 && usoComodinJugador1 ? <button onClick={usarComodin} className="next-button">Comodin</button> : null}
+                {jugadorActual === 2 && usoComodinJugador2 ? <button onClick={usarComodin} className="next-button">Comodin</button> : null}
             </div>
-            {esCorrecto === true && <p className="correct-message">Correct!</p>}
-            {esCorrecto === false && <p className="incorrect-message">Incorrect!</p>} 
-            <button onClick={siguienteRonda} disabled={puedeHacerClic || !opcionesDeshabilitadas} className="next-button">Next question {"->"}</button>
-            <br></br>
-            {jugadorActual === 1 && usoComodinJugador1 ? <button onClick={usarComodin} className="next-button">Comodin</button>: null}
-            {jugadorActual === 2 && usoComodinJugador2 ? <button onClick={usarComodin} className="next-button">Comodin</button>: null}
         </div>
     );
 }
