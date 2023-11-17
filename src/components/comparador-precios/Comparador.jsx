@@ -34,7 +34,7 @@ const Comparador = () => {
             nuevoProducto = {
                 id: productos.length,
                 nombre: nombreProd,
-                precio: precioProd,
+                precio: parseInt(precioProd),
                 comerio: comercio
             }
 
