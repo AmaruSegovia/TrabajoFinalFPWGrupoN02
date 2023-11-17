@@ -5,8 +5,9 @@ export default function Nota({ id, titulo, descripcion, delete: deleteNote, nota
   return (
     <ListGroup.Item className="d-flex justify-content-between align-items-center"
     style={ {maxHeight: "10%", overflow: "-moz-hidden-unscrollable"}}>
-      <div>-
-        <strong>{titulo}</strong><br></br> {descripcion}
+      <div>
+        <strong>{titulo}</strong><br></br>
+       <> {descripcion} </>
       </div>
       <div>
       <Button variant="danger" onClick={() => deleteNote(id)}>
