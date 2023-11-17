@@ -6,7 +6,6 @@ import ProyectosReact from './components/ProyectosReact.jsx';
 import ProyectosPhaser from './components/ProyectosPhaser.jsx';
 import Nosotros from './components/sitio-nosotros/Nosotros.jsx';
 import ListaNotas from './components/listaTarea/ListaNotas.jsx';
-import ListaTareas from './components/listaTarea/ListaTareas.jsx';
 
 function App() {
     return (
