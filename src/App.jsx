@@ -17,7 +17,6 @@ function App() {
                     <Route path="/phaser-js" element={<ProyectosPhaser/>} />
                     <Route path="/nosotros" element={<Nosotros/>} />
                     <Route path= "/listaNotas" element={<ListaNotas/>} />
-                    <Route path= "/listaTareas" element={<ListaTareas/>} />
                 </Route>
             </Routes>
         </div>
