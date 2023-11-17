@@ -7,6 +7,7 @@ import ProyectosPhaser from './components/ProyectosPhaser.jsx';
 import Nosotros from './components/sitio-nosotros/Nosotros.jsx';
 import ListaNotas from './components/listaTarea/ListaNotas.jsx';
 import Comparador from './components/comparador-precios/Comparador.jsx';
+import JuegoAnimales from './components/juegoAnimales/Inicio.jsx';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                     
                     <Route path="/react/comparador-precios" element={<Comparador/>} />
                     <Route path="/react/lista-de-notas" element={<ListaNotas/>} />
+                    <Route path="/react/juegoAnimales" element={<JuegoAnimales/>} />
                     <Route path="/react/adivinar-animales" element={<ProyectosReact/>} />
 
                     <Route path="/phaser-js/dude" element={<ProyectosPhaser/>} />

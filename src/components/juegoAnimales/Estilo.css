@@ -1,0 +1,164 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('/public/img/JuegoAnimales/fondo.png');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  h1 {
+    font-family: cursive;
+  }
+  
+  
+  
+  .juego-container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .juego-title {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .round-number {
+    font-weight: bold;
+    color: #007BFF;
+  }
+  
+  .animal-image {
+    max-width: 100%;
+    border: 2px solid #333;
+    border-radius: 8px;
+  }
+  
+  .opciones-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .opcion-button {
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .opcion-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .correct-message,
+  .incorrect-message {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007BFF;
+  }
+  
+  .next-button {
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+  }
+  
+.inicio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.inicio-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.inicio-form h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+
+.inicio-form input {
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+.jugar-button {
+    background-color: #007BFF;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 20px;
+}
+
+.jugar-button:hover {
+    background-color: #0056b3;
+}
+
+
+.felicitaciones-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.felicitaciones-container h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+
+.felicitaciones-container p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.felicitacion{
+  color: #007BFF;;
+}
+
+.resultadoTotal{
+  font-family: cursive;
+  color:#333333
+}
+
