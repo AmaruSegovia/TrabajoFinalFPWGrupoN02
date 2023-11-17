@@ -1,5 +1,7 @@
 import React from 'react'
 import ItemButtonSmall from './ItemButtonSmall';
+/* import { Link } from 'react-router-dom'; */
+import { Outlet, Link } from "react-router-dom";
 
 const ProyectosReact = () =>{
     return (
@@ -14,12 +16,13 @@ const ProyectosReact = () =>{
                     <ItemButtonSmall label="Comparador de Precios"></ItemButtonSmall>
                 </div>
                 <div className="transition-all ease-out basis-1/3 mx-24 my-4 rounded-lg border-2 border-slate-300 hover:border-sky-500 shadow-2xl shadow-slate-300 hover:shadow-sky-300 text-slate-500 hover:text-slate-800">
-                    <ItemButtonSmall label="Lista de Tareas Interactiva"></ItemButtonSmall>
+                <Link to="/listaNotas"><ItemButtonSmall label="Lista de Tareas Interactiva"></ItemButtonSmall></Link>
                 </div>
                 <div className="transition-all ease-out basis-1/3 mx-24 my-4 rounded-lg border-2 border-slate-300 hover:border-sky-500 shadow-2xl shadow-slate-300 hover:shadow-sky-300 text-slate-500 hover:text-slate-800">
                     <ItemButtonSmall label="Juego de Adivinar Animales (en inglés, 2 jugadores)"></ItemButtonSmall>
                 </div>
             </div>
+            <Outlet/>
         </div>
     )
 }
