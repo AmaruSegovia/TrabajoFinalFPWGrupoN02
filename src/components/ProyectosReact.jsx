@@ -3,7 +3,7 @@ import ItemButtonSmall from './ItemButtonSmall';
 /* import { Link } from 'react-router-dom'; */
 import { Outlet, Link } from "react-router-dom";
 
-const ProyectosReact = () =>{
+const ProyectosReact = () => {
     return (
         <div>
             <div className="text-center p-6 m-6">
@@ -13,16 +13,18 @@ const ProyectosReact = () =>{
             </div>
             <div className="flex justify-items-center text-center">
                 <div className="transition-all ease-out basis-1/3 mx-24 my-4 rounded-lg border-2 border-slate-300 hover:border-sky-500 shadow-2xl shadow-slate-300 hover:shadow-sky-300 text-slate-500 hover:text-slate-800">
-                    <ItemButtonSmall label="Comparador de Precios"></ItemButtonSmall>
+                    <Link to="comparador-precios">
+                        <ItemButtonSmall label="Comparador de Precios"></ItemButtonSmall>
+                    </Link>
                 </div>
                 <div className="transition-all ease-out basis-1/3 mx-24 my-4 rounded-lg border-2 border-slate-300 hover:border-sky-500 shadow-2xl shadow-slate-300 hover:shadow-sky-300 text-slate-500 hover:text-slate-800">
-                <Link to="/listaNotas"><ItemButtonSmall label="Lista de Tareas Interactiva"></ItemButtonSmall></Link>
+                    <Link to="lista-de-notas"><ItemButtonSmall label="Lista de Tareas Interactiva"></ItemButtonSmall></Link>
                 </div>
                 <div className="transition-all ease-out basis-1/3 mx-24 my-4 rounded-lg border-2 border-slate-300 hover:border-sky-500 shadow-2xl shadow-slate-300 hover:shadow-sky-300 text-slate-500 hover:text-slate-800">
                     <ItemButtonSmall label="Juego de Adivinar Animales (en inglés, 2 jugadores)"></ItemButtonSmall>
                 </div>
             </div>
-            <Outlet/>
+            <Outlet />
         </div>
     )
 }
