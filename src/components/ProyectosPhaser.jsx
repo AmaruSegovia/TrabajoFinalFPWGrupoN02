@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemButtonSmall from './ItemButtonSmall';
+import {Link} from "react-router-dom";
 
 const ProyectosPhaser = () => {
     return (
@@ -14,7 +15,9 @@ const ProyectosPhaser = () => {
                     <ItemButtonSmall label="Dude"></ItemButtonSmall>
                 </div>
                 <div className="transition-all ease-out basis-1/2 mx-24 my-4 rounded-lg border-2 border-slate-300 hover:border-yellow-400 shadow-2xl shadow-slate-300 hover:shadow-yellow-300 text-slate-500 hover:text-slate-800">
-                    <ItemButtonSmall label="Juego de Naves"></ItemButtonSmall>
+                    <Link to="juego-naves">
+                        <ItemButtonSmall label="Juego de Naves"></ItemButtonSmall>
+                    </Link>
                 </div>
             </div>
         </div>
