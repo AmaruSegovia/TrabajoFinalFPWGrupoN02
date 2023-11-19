@@ -12,7 +12,7 @@ const ProyectosPhaser = () => {
             </div>
             <div className="flex justify-items-center text-center px-64">
                 <div className="transition-all ease-out basis-1/2 mx-24 my-4 rounded-lg border-2 border-slate-300 hover:border-yellow-400 shadow-2xl shadow-slate-300 hover:shadow-yellow-300 text-slate-500 hover:text-slate-800">
-                    <ItemButtonSmall label="Dude"></ItemButtonSmall>
+                    <Link to="dude"> <ItemButtonSmall label="Dude"></ItemButtonSmall> </Link>
                 </div>
                 <div className="transition-all ease-out basis-1/2 mx-24 my-4 rounded-lg border-2 border-slate-300 hover:border-yellow-400 shadow-2xl shadow-slate-300 hover:shadow-yellow-300 text-slate-500 hover:text-slate-800">
                     <Link to="juego-naves">

@@ -9,6 +9,7 @@ import ListaNotas from './components/listaTarea/ListaNotas.jsx';
 import Comparador from './components/comparador-precios/Comparador.jsx';
 import JuegoAnimales from './components/juegoAnimales/Inicio.jsx';
 import SpaceWarConfig from './components/space-war/Config.jsx';
+import Dude from './components/juegoDude/Dude.jsx';
 
 function App() {
     return (
@@ -25,7 +26,7 @@ function App() {
                     <Route path="/react/juegoAnimales" element={<JuegoAnimales/>} />
                     <Route path="/react/adivinar-animales" element={<ProyectosReact/>} />
 
-                    <Route path="/phaser-js/dude" element={<ProyectosPhaser/>} />
+                    <Route path="/phaser-js/dude" element={<Dude/>} />
                     <Route path="/phaser-js/juego-naves" element={<SpaceWarConfig/>} />
                 </Route>
             </Routes>
