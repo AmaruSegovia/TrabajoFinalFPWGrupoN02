@@ -28,6 +28,7 @@ export default function ListaNotas() {
           descripcion: descripcion,
           estadoVisible: true,
           estadoDeNota: estadoDeNota,
+          fechaCreacion: new Date().toLocaleString(),
         };
         setNotes([...notes, nuevaNota]);
         setTitulo("");
@@ -59,92 +60,94 @@ export default function ListaNotas() {
     setNotes(nuevaLista);
   };
 
+  // Función para filtrar las notas según el estado
+  const filtrarNotas = (estado) => {
+    return notes.filter((nota) => nota.estadoDeNota === estado);
+  };
+
   return (
     <Container>
-    <Row>
-    <>
-      <h1 className="m-4">Lista de Notas</h1>
+      <Row>
+        <>
+          <h1 className="m-4">Lista de Notas</h1>
 
-      <Form>
-        <InputGroup className="mb-3">
-          <Button variant="success" onClick={addNote}>
-            Agregar Nota
-          </Button>
-          <Form.Control
-            type="text"
-            onChange={guardarTitulo}
-            placeholder="Título"
-            value={titulo}
-          />
-          <Form.Control
-            type="text"
-            onChange={guardarInput}
-            placeholder="Descripción"
-            value={descripcion}
-          />
-        </InputGroup>
-      </Form>
+          <Form>
+            <InputGroup className="mb-3">
+              <Button variant="success" onClick={addNote}>
+                Agregar Nota
+              </Button>
+              <Form.Control
+                type="text"
+                onChange={guardarTitulo}
+                placeholder="Título"
+                value={titulo}
+              />
+              <Form.Control
+                type="text"
+                onChange={guardarInput}
+                placeholder="Descripción"
+                value={descripcion}
+              />
+            </InputGroup>
+          </Form>
 
-      <div className="justify-content-center">
-        <ListGroup>
-          {notes.map((nota) =>
-            nota.estadoDeNota === 1 ? (
-              <Nota
-                key={nota.id}
-                id={nota.id}
-                titulo={nota.titulo}
-                descripcion={nota.descripcion}
-                estadoDeNota={nota.estadoDeNota}
-                delete={deleteNote}
-                notaProceso={notaProceso}
-                notaTerminada={notaTerminada}
-              />
-            ) : null
-          )}
-        </ListGroup>
-      </div>
-      <br />
-      <h1 className="m-4">Notas en Proceso</h1>
-      <div className="justify-content-center">
-        <ListGroup>
-          {notes.map((nota) =>
-            nota.estadoDeNota === 2 ? (
-              <Nota
-                key={nota.id}
-                id={nota.id}
-                titulo={nota.titulo}
-                descripcion={nota.descripcion}
-                estadoDeNota={nota.estadoDeNota}
-                delete={deleteNote}
-                notaProceso={notaProceso}
-                notaTerminada={notaTerminada}
-              />
-            ) : null
-          )}
-        </ListGroup>
-      </div>
-      <br />
-      <h1 className="m-4">Notas Finalizadas</h1>
-      <div className="justify-content-center">
-        <ListGroup>
-          {notes.map((nota) =>
-            nota.estadoDeNota === 3 ? (
-              <Nota
-                key={nota.id}
-                id={nota.id}
-                titulo={nota.titulo}
-                descripcion={nota.descripcion}
-                estadoDeNota={nota.estadoDeNota}
-                delete={deleteNote}
-                notaProceso={notaProceso}
-                notaTerminada={notaTerminada}
-              />
-            ) : null
-          )}
-        </ListGroup>
-      </div>
-    </>
-    </Row>
+          <div className="justify-content-center">
+            <ListGroup>
+              {filtrarNotas(1).map((nota) => (
+                <Nota
+                  key={nota.id}
+                  id={nota.id}
+                  titulo={nota.titulo}
+                  descripcion={nota.descripcion}
+                  estadoDeNota={nota.estadoDeNota}
+                  fechaCreacion={nota.fechaCreacion}
+                  delete={deleteNote}
+                  notaProceso={notaProceso}
+                  notaTerminada={notaTerminada}
+                />
+              ))}
+            </ListGroup>
+          </div>
+          <br />
+          <h1 className="m-4">Notas en Proceso</h1>
+          <div className="justify-content-center">
+            <ListGroup>
+              {filtrarNotas(2).map((nota) => (
+                <Nota
+                  key={nota.id}
+                  id={nota.id}
+                  titulo={nota.titulo}
+                  descripcion={nota.descripcion}
+                  estadoDeNota={nota.estadoDeNota}
+                  fechaCreacion={nota.fechaCreacion}
+                  delete={deleteNote}
+                  notaProceso={notaProceso}
+                  notaTerminada={notaTerminada}
+                />
+              ))}
+            </ListGroup>
+          </div>
+          <br />
+          <h1 className="m-4">Notas Finalizadas</h1>
+          <div className="justify-content-center">
+            <ListGroup>
+              {filtrarNotas(3).map((nota) => (
+                <Nota
+                  key={nota.id}
+                  id={nota.id}
+                  titulo={nota.titulo}
+                  descripcion={nota.descripcion}
+                  estadoDeNota={nota.estadoDeNota}
+                  fechaCreacion={nota.fechaCreacion}
+                  delete={deleteNote}
+                  notaProceso={notaProceso}
+                  notaTerminada={notaTerminada}
+                />
+              ))}
+            </ListGroup>
+          </div>
+        </>
+      </Row>
     </Container>
   );
 }

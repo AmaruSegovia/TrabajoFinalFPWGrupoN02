@@ -1,72 +1,53 @@
-import React, { useState } from 'react'
-import { Form, Button, ListGroup, InputGroup } from "react-bootstrap";
-import { Container, Row } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Form, Table, Container, Row, Col,InputGroup } from 'react-bootstrap';
 
 const Comparador = () => {
     // Estados para los array de productos
-    let [productos, setProductos] = useState([]);
-    let [productosBaratos, setProductosBaratos] = useState([]);
-
-    // Estado para el producto creado
-    let [nuevoProducto, setNuevoProducto] = useState({});
+    const [productos, setProductos] = useState([]);
+    const [productosBaratos, setProductosBaratos] = useState([]);
 
     // Estados para los inputs
-    let [nombreProd, setNombreProd] = useState('');
-    let [precioProd, setPrecioProd] = useState('');
-    let [comercio, setComercio] = useState('');
+    const [nombreProd, setNombreProd] = useState('');
+    const [precioProd, setPrecioProd] = useState('');
+    const [comercio, setComercio] = useState('');
 
     // Guardando los valores de los input
-    const guardarInputNombre = (e) => {
-        setNombreProd(e.target.value);
-        console.log(nombreProd);
-    }
-    const guardarInputPrecio = (e) => {
-        setPrecioProd(e.target.value);
-        console.log(precioProd);
-    }
-    const guardarInputComercio = (e) => {
-        setComercio(e.target.value);
-        console.log(comercio);
-    }
+    const guardarInputNombre = (e) => setNombreProd(e.target.value);
+    const guardarInputPrecio = (e) => setPrecioProd(e.target.value);
+    const guardarInputComercio = (e) => setComercio(e.target.value);
 
+    // Función para agregar un nuevo producto
     const agregarProducto = () => {
         if (nombreProd && precioProd && comercio) {
-            nuevoProducto = {
+            const nuevoProducto = {
                 id: productos.length,
                 nombre: nombreProd,
                 precio: parseInt(precioProd),
-                comerio: comercio
+                comercio: comercio,
+            };
+
+            // Actualizar el estado de productos
+            setProductos([...productos, nuevoProducto]);
+
+            // Actualizar productos baratos
+            const productoBaratoExistente = productosBaratos[nuevoProducto.nombre];
+            if (!productoBaratoExistente || nuevoProducto.precio < productoBaratoExistente.precio) {
+                setProductosBaratos((prevProductosBaratos) => ({
+                    ...prevProductosBaratos,
+                    [nuevoProducto.nombre]: nuevoProducto,
+                }));
             }
 
-            productos.push(nuevoProducto);
-
-            let productoReemplazado = true;
-
-            if (!productosBaratos[nuevoProducto.nombre] || nuevoProducto.precio < productosBaratos[nuevoProducto.nombre].precio) {
-                productosBaratos[nuevoProducto.nombre] = nuevoProducto;
-                console.log('Se añade o actualiza producto barato');
-            }
-
-            if (productoReemplazado === false) {
-                productosBaratos.push(nuevoProducto);
-            }
-            alert("¡Producto agregado exitosamente!");
+            alert('¡Producto agregado exitosamente!');
         } else {
-            alert("Por favor, complete todos los campos.");
+            alert('Por favor, complete todos los campos.');
         }
-
-        console.log(productos, productosBaratos);
-    }
-    /* 
-    let listarProductos = () => {}
-    let listarMenorPrecio = () => {} 
-    */
-
+    };
 
     return (
         <Container className="my-8">
-            <h1 className='font-bold text-center my-2'>Comparador de Precios</h1>
-            <h2 className='font-semibold text-lg text-center mb-8'>Ingresa los nombres, los proveedores y sus precios.</h2>
+            <h1 className="font-bold text-center my-2">Comparador de Precios</h1>
+            <h2 className="font-semibold text-lg text-center mb-8">Ingresa los nombres, los proveedores y sus precios.</h2>
 
             <Form>
                 <InputGroup>
@@ -82,12 +63,18 @@ const Comparador = () => {
                         placeholder="Precio del Producto"
                         value={precioProd}
                     />
-                    <Form.Control
-                        type="text"
+                     <Form.Control
+                        as="select"
                         onChange={guardarInputComercio}
-                        placeholder="Nombre del Comercio"
                         value={comercio}
-                    />
+                    >
+                        <option>Comodin</option>
+                        <option>Vea</option>
+                        <option>Carrefour</option>
+                        <option>Yaguar</option>
+                        <option>ChangoMas</option>
+                        <option>Dia</option>
+                    </Form.Control>
                 </InputGroup>
                 <div className="flex my-8">
                     <button
@@ -105,38 +92,63 @@ const Comparador = () => {
                         + Agregar Producto
                     </button>
                 </div>
-                <div className="flex justify-center my-12">
-
-                    <button
-                        type="button"
-                        className='
-                            transition-all ease-out duration-100 
-                            width-100 
-                            text-l text-white 
-                            mx-auto p-2 px-3 
-                            rounded-lg 
-                            bg-orange-400 hover:bg-orange-300 active:bg-orange-500 
-                            active:ring-2 active:ring-gray-900 
-                            shadow-md'>
-                        ☰ Listar Productos
-                    </button>
-                    <button
-                        type="button"
-                        className="
-                            transition-all ease-out duration-100 
-                            width-100 
-                            text-l text-white 
-                            mx-auto p-2 px-3 
-                            rounded-lg 
-                            bg-lime-500 hover:bg-lime-400 active:bg-lime-600 
-                            active:ring-2 active:ring-gray-900 
-                            shadow-md">
-                        ↘ Listar Más Baratos
-                    </button>
-                </div>
             </Form>
-        </Container>
-    )
-}
 
-export default Comparador
+            {/* Tablas */}
+            <Row>
+                {/* Tabla de Productos */}
+                <Col>
+                    <div className="my-8">
+                        <h3 className="font-bold text-lg mb-4">Lista de Productos</h3>
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Comercio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {productos.map((producto) => (
+                                    <tr key={producto.id}>
+                                        <td>{producto.id}</td>
+                                        <td>{producto.nombre}</td>
+                                        <td>{producto.precio}</td>
+                                        <td>{producto.comercio}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </div>
+                </Col>
+                {/* Tabla de Productos Más Baratos */}
+                <Col>
+                    <div className="my-8">
+                        <h3 className="font-bold text-lg mb-4">Lista de Productos Más Baratos</h3>
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Comercio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {Object.values(productosBaratos).map((producto) => (
+                                    <tr key={producto.id}>
+                                        <td>{producto.nombre}</td>
+                                        <td>{producto.precio}</td>
+                                        <td>{producto.comercio}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+    );
+};
+
+export default Comparador;
