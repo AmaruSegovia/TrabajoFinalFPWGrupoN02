@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/TrabajoFinalFPWGrupoN02/static/js/main.080c936a.js",
-    "index.html": "/TrabajoFinalFPWGrupoN02/index.html",
-    "main.080c936a.js.map": "/TrabajoFinalFPWGrupoN02/static/js/main.080c936a.js.map"
+    "main.js": "/trabajofinalfpwgrupon02/static/js/main.080c936a.js",
+    "index.html": "/trabajofinalfpwgrupon02/index.html",
+    "main.080c936a.js.map": "/trabajofinalfpwgrupon02/static/js/main.080c936a.js.map"
   },
   "entrypoints": [
     "static/js/main.080c936a.js"
