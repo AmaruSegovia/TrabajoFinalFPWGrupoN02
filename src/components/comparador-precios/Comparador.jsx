@@ -77,7 +77,6 @@ const Comparador = () => {
             <h1 className="font-bold text-center my-2">Comparador de Precios</h1>
             <h2 className="font-semibold text-lg text-center mb-8">Ingresa los nombres, los proveedores y sus precios.</h2>
             <div>
-        <button onClick={notify}>Notify!</button>
         <ToastContainer />
       </div>
             <Form>
