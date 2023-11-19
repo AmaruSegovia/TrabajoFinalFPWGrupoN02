@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { Form, Button, ListGroup, InputGroup } from "react-bootstrap";
 import Nota from "./Nota";
 import { Container, Row } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function ListaNotas() {
+  const notify = () => toast("Wow so easy!");
   const [titulo, setTitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [notes, setNotes] = useState([]);
@@ -19,9 +23,6 @@ export default function ListaNotas() {
 
   const addNote = (e) => {
     if (titulo.trim() !== "" && descripcion.trim() !== "" && estadoDeNota === 1 ) {
-      const descripcionExistente = notes.some((nota) => nota.descripcion === descripcion);
-
-      if (!descripcionExistente) {
         const nuevaNota = {
           id: notes.length,
           titulo: titulo,
@@ -30,12 +31,32 @@ export default function ListaNotas() {
           estadoDeNota: estadoDeNota,
           fechaCreacion: new Date().toLocaleString(),
         };
+
         setNotes([...notes, nuevaNota]);
         setTitulo("");
         setDescripcion("");
-      } else {
-        alert("La Nota ya existe");
-      }
+        
+        toast.success('Nota agregada con éxito!', {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+          });
+    }
+    else {
+      toast.warn('Por favor complete los campos', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
     }
   };
 
@@ -148,6 +169,7 @@ export default function ListaNotas() {
           </div>
         </>
       </Row>
+      <ToastContainer />
     </Container>
   );
 }

@@ -20,12 +20,10 @@ function App() {
                     <Route path="/react" element={<ProyectosReact/>} />
                     <Route path="/phaser-js" element={<ProyectosPhaser/>} />
                     <Route path="/nosotros" element={<Nosotros/>} />
-                    
                     <Route path="/react/comparador-precios" element={<Comparador/>} />
                     <Route path="/react/lista-de-notas" element={<ListaNotas/>} />
                     <Route path="/react/juegoAnimales" element={<JuegoAnimales/>} />
                     <Route path="/react/adivinar-animales" element={<ProyectosReact/>} />
-
                     <Route path="/phaser-js/dude" element={<Dude/>} />
                     <Route path="/phaser-js/juego-naves" element={<SpaceWarConfig/>} />
                 </Route>

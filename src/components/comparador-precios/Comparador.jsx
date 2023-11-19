@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Table, Container, Row, Col,InputGroup } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Comparador = () => {
+
+    //Tostify
+    const notify = () => toast();
+    
     // Estados para los array de productos
     const [productos, setProductos] = useState([]);
     const [productosBaratos, setProductosBaratos] = useState([]);
@@ -9,7 +15,7 @@ const Comparador = () => {
     // Estados para los inputs
     const [nombreProd, setNombreProd] = useState('');
     const [precioProd, setPrecioProd] = useState('');
-    const [comercio, setComercio] = useState('');
+    const [comercio, setComercio] = useState('Comodin');
 
     // Guardando los valores de los input
     const guardarInputNombre = (e) => setNombreProd(e.target.value);
@@ -38,9 +44,31 @@ const Comparador = () => {
                 }));
             }
 
-            alert('¡Producto agregado exitosamente!');
+            toast.success('¡Producto agregado con éxito!', {
+                position: "top-right",
+                autoClose: 2500,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "colored",
+                });
+
+        setNombreProd('');
+        setPrecioProd('');
+        setComercio('');
+
+                
         } else {
-            alert('Por favor, complete todos los campos.');
+            toast.error('Por favor, complete correctamente todos los campos', {
+                position: "top-right",
+                autoClose: 2500,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "colored",
+                });
         }
     };
 
@@ -48,7 +76,10 @@ const Comparador = () => {
         <Container className="my-8">
             <h1 className="font-bold text-center my-2">Comparador de Precios</h1>
             <h2 className="font-semibold text-lg text-center mb-8">Ingresa los nombres, los proveedores y sus precios.</h2>
-
+            <div>
+        <button onClick={notify}>Notify!</button>
+        <ToastContainer />
+      </div>
             <Form>
                 <InputGroup>
                     <Form.Control
@@ -58,7 +89,7 @@ const Comparador = () => {
                         value={nombreProd}
                     />
                     <Form.Control
-                        type="text"
+                        type="number"
                         onChange={guardarInputPrecio}
                         placeholder="Precio del Producto"
                         value={precioProd}
